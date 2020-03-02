@@ -202,7 +202,7 @@ Shopify.prototype.updateGraphqlLimits = function updateGraphqlLimits(throttle) {
  * @public
  */
 Shopify.prototype.graphql = function graphql(data, variables) {
-  let pathname = '/admin/api';
+  let pathname = '/admin/api/2019-04/';
 
   if (this.options.apiVersion) {
     pathname += `/${this.options.apiVersion}`;
