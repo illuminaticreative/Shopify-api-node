@@ -1,6 +1,0 @@
-{
-  "customer_saved_search": {
-    "name": "Spent more than $50",
-    "query": "total_spent:>50"
-  }
-}

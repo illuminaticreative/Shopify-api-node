@@ -21,10 +21,11 @@ function ProductVariant(shopify) {
   this.key = 'variant';
 }
 
-assign(
-  ProductVariant.prototype,
-  pick(baseChild, ['buildUrl', 'count', 'delete'])
-);
+assign(ProductVariant.prototype, pick(baseChild, [
+  'buildUrl',
+  'count',
+  'delete'
+]));
 
 /**
  * Gets a single product variant by its ID.
@@ -36,13 +37,12 @@ assign(
  */
 ProductVariant.prototype.get = function get(id, params) {
   const url = base.buildUrl.call(this, id, params);
-  const headers = {};
 
   if (this.shopify.options.presentmentPrices) {
-    headers['X-Shopify-Api-Features'] = 'include-presentment-prices';
+    url.headers['X-Shopify-Api-Features'] = 'include-presentment-prices';
   }
 
-  return this.shopify.request(url, 'GET', this.key, undefined, headers);
+  return this.shopify.request(url, 'GET', this.key);
 };
 
 /**
@@ -55,13 +55,12 @@ ProductVariant.prototype.get = function get(id, params) {
  */
 ProductVariant.prototype.create = function(productId, params) {
   const url = this.buildUrl(productId);
-  const headers = {};
 
   if (this.shopify.options.presentmentPrices) {
-    headers['X-Shopify-Api-Features'] = 'include-presentment-prices';
+    url.headers['X-Shopify-Api-Features'] = 'include-presentment-prices';
   }
 
-  return this.shopify.request(url, 'POST', this.key, params, headers);
+  return this.shopify.request(url, 'POST', this.key, params);
 };
 
 /**
@@ -74,13 +73,12 @@ ProductVariant.prototype.create = function(productId, params) {
  */
 ProductVariant.prototype.list = function(productId, params) {
   const url = this.buildUrl(productId, undefined, params);
-  const headers = {};
 
   if (this.shopify.options.presentmentPrices) {
-    headers['X-Shopify-Api-Features'] = 'include-presentment-prices';
+    url.headers['X-Shopify-Api-Features'] = 'include-presentment-prices';
   }
 
-  return this.shopify.request(url, 'GET', this.name, undefined, headers);
+  return this.shopify.request(url, 'GET', this.name);
 };
 
 /**
@@ -93,13 +91,12 @@ ProductVariant.prototype.list = function(productId, params) {
  */
 ProductVariant.prototype.update = function update(id, params) {
   const url = base.buildUrl.call(this, id);
-  const headers = {};
 
   if (this.shopify.options.presentmentPrices) {
-    headers['X-Shopify-Api-Features'] = 'include-presentment-prices';
+    url.headers['X-Shopify-Api-Features'] = 'include-presentment-prices';
   }
 
-  return this.shopify.request(url, 'PUT', this.key, params, headers);
+  return this.shopify.request(url, 'PUT', this.key, params);
 };
 
 module.exports = ProductVariant;

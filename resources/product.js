@@ -31,13 +31,12 @@ assign(Product.prototype, pick(base, ['buildUrl', 'delete', 'count']));
  */
 Product.prototype.get = function(id, params) {
   const url = this.buildUrl(id, params);
-  const headers = {};
 
   if (this.shopify.options.presentmentPrices) {
-    headers['X-Shopify-Api-Features'] = 'include-presentment-prices';
+    url.headers['X-Shopify-Api-Features'] = 'include-presentment-prices';
   }
 
-  return this.shopify.request(url, 'GET', this.key, undefined, headers);
+  return this.shopify.request(url, 'GET', this.key);
 };
 
 /**
@@ -49,13 +48,12 @@ Product.prototype.get = function(id, params) {
  */
 Product.prototype.create = function(params) {
   const url = this.buildUrl();
-  const headers = {};
 
   if (this.shopify.options.presentmentPrices) {
-    headers['X-Shopify-Api-Features'] = 'include-presentment-prices';
+    url.headers['X-Shopify-Api-Features'] = 'include-presentment-prices';
   }
 
-  return this.shopify.request(url, 'POST', this.key, params, headers);
+  return this.shopify.request(url, 'POST', this.key, params);
 };
 
 /**
@@ -67,13 +65,12 @@ Product.prototype.create = function(params) {
  */
 Product.prototype.list = function(params) {
   const url = this.buildUrl(undefined, params);
-  const headers = {};
 
   if (this.shopify.options.presentmentPrices) {
-    headers['X-Shopify-Api-Features'] = 'include-presentment-prices';
+    url.headers['X-Shopify-Api-Features'] = 'include-presentment-prices';
   }
 
-  return this.shopify.request(url, 'GET', this.name, undefined, headers);
+  return this.shopify.request(url, 'GET', this.name);
 };
 
 /**
@@ -86,13 +83,12 @@ Product.prototype.list = function(params) {
  */
 Product.prototype.update = function(id, params) {
   const url = this.buildUrl(id);
-  const headers = {};
 
   if (this.shopify.options.presentmentPrices) {
-    headers['X-Shopify-Api-Features'] = 'include-presentment-prices';
+    url.headers['X-Shopify-Api-Features'] = 'include-presentment-prices';
   }
 
-  return this.shopify.request(url, 'PUT', this.key, params, headers);
+  return this.shopify.request(url, 'PUT', this.key, params);
 };
 
 module.exports = Product;

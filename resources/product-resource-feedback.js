@@ -16,12 +16,13 @@ function ProductResourceFeedback(shopify) {
   this.shopify = shopify;
 
   this.parentName = 'products';
-  this.key = this.name = 'resource_feedback';
+  this.key = this.name= 'resource_feedback';
 }
 
-assign(
-  ProductResourceFeedback.prototype,
-  pick(baseChild, ['buildUrl', 'create', 'list'])
-);
+assign(ProductResourceFeedback.prototype, pick(baseChild, [
+  'buildUrl',
+  'create',
+  'list'
+]));
 
 module.exports = ProductResourceFeedback;

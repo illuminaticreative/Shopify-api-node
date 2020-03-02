@@ -29,9 +29,8 @@ assign(Order.prototype, base);
  */
 Order.prototype.close = function close(id) {
   const url = this.buildUrl(`${id}/close`);
-  return this.shopify
-    .request(url, 'POST', undefined, {})
-    .then((body) => body[this.key]);
+  return this.shopify.request(url, 'POST', undefined, {})
+    .then(body => body[this.key]);
 };
 
 /**
@@ -43,9 +42,8 @@ Order.prototype.close = function close(id) {
  */
 Order.prototype.open = function open(id) {
   const url = this.buildUrl(`${id}/open`);
-  return this.shopify
-    .request(url, 'POST', undefined, {})
-    .then((body) => body[this.key]);
+  return this.shopify.request(url, 'POST', undefined, {})
+    .then(body => body[this.key]);
 };
 
 /**
@@ -58,9 +56,8 @@ Order.prototype.open = function open(id) {
  */
 Order.prototype.cancel = function cancel(id, params) {
   const url = this.buildUrl(`${id}/cancel`);
-  return this.shopify
-    .request(url, 'POST', undefined, params)
-    .then((body) => body[this.key]);
+  return this.shopify.request(url, 'POST', undefined, params)
+    .then(body => body[this.key]);
 };
 
 module.exports = Order;

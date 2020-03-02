@@ -32,9 +32,8 @@ assign(Fulfillment.prototype, omit(baseChild, ['delete']));
  */
 Fulfillment.prototype.complete = function complete(orderId, id) {
   const url = this.buildUrl(orderId, `${id}/complete`);
-  return this.shopify
-    .request(url, 'POST', undefined, {})
-    .then((body) => body[this.key]);
+  return this.shopify.request(url, 'POST', undefined, {})
+    .then(body => body[this.key]);
 };
 
 /**
@@ -47,9 +46,8 @@ Fulfillment.prototype.complete = function complete(orderId, id) {
  */
 Fulfillment.prototype.open = function open(orderId, id) {
   const url = this.buildUrl(orderId, `${id}/open`);
-  return this.shopify
-    .request(url, 'POST', undefined, {})
-    .then((body) => body[this.key]);
+  return this.shopify.request(url, 'POST', undefined, {})
+    .then(body => body[this.key]);
 };
 
 /**
@@ -62,9 +60,8 @@ Fulfillment.prototype.open = function open(orderId, id) {
  */
 Fulfillment.prototype.cancel = function cancel(orderId, id) {
   const url = this.buildUrl(orderId, `${id}/cancel`);
-  return this.shopify
-    .request(url, 'POST', undefined, {})
-    .then((body) => body[this.key]);
+  return this.shopify.request(url, 'POST', undefined, {})
+    .then(body => body[this.key]);
 };
 
 module.exports = Fulfillment;

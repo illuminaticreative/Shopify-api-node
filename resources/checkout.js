@@ -30,9 +30,8 @@ assign(Checkout.prototype, omit(base, 'delete'));
  */
 Checkout.prototype.complete = function complete(token) {
   const url = this.buildUrl(`${token}/complete`);
-  return this.shopify
-    .request(url, 'POST', undefined, {})
-    .then((body) => body[this.key]);
+  return this.shopify.request(url, 'POST', undefined, {})
+    .then(body => body[this.key]);
 };
 
 /**

@@ -31,13 +31,12 @@ assign(ProductListing.prototype, pick(base, ['count', 'buildUrl', 'delete']));
  */
 ProductListing.prototype.get = function(id, params) {
   const url = this.buildUrl(id, params);
-  const headers = {};
 
   if (this.shopify.options.presentmentPrices) {
-    headers['X-Shopify-Api-Features'] = 'include-presentment-prices';
+    url.headers['X-Shopify-Api-Features'] = 'include-presentment-prices';
   }
 
-  return this.shopify.request(url, 'GET', this.key, undefined, headers);
+  return this.shopify.request(url, 'GET', this.key);
 };
 
 /**
@@ -49,13 +48,12 @@ ProductListing.prototype.get = function(id, params) {
  */
 ProductListing.prototype.list = function(params) {
   const url = this.buildUrl(undefined, params);
-  const headers = {};
 
   if (this.shopify.options.presentmentPrices) {
-    headers['X-Shopify-Api-Features'] = 'include-presentment-prices';
+    url.headers['X-Shopify-Api-Features'] = 'include-presentment-prices';
   }
 
-  return this.shopify.request(url, 'GET', this.name, undefined, headers);
+  return this.shopify.request(url, 'GET', this.name);
 };
 
 /**
@@ -69,13 +67,12 @@ ProductListing.prototype.list = function(params) {
 ProductListing.prototype.create = function create(productId, params) {
   params || (params = { product_id: productId });
   const url = this.buildUrl(productId);
-  const headers = {};
 
   if (this.shopify.options.presentmentPrices) {
-    headers['X-Shopify-Api-Features'] = 'include-presentment-prices';
+    url.headers['X-Shopify-Api-Features'] = 'include-presentment-prices';
   }
 
-  return this.shopify.request(url, 'PUT', this.key, params, headers);
+  return this.shopify.request(url, 'PUT', this.key, params);
 };
 
 /**
