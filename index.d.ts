@@ -1071,6 +1071,22 @@ declare namespace Shopify {
     product_id: number;
     sort_value?: string;
   }
+  
+  interface ICollection {
+    admin_graphql_api_id: string;
+    body_html: string;
+    collection_type: string;
+    handle: string;
+    id: number;
+    image: IImage;
+    products_count: number;
+    published_at: string;
+    published_scope: string;
+    sort_order: string;
+    template_suffix: string | null;
+    title: string;
+    updated_at: string;
+  }
 
   type CollectionListingSortOrder =
     | 'alpha-asc'
