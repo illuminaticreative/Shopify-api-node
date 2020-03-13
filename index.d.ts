@@ -123,6 +123,10 @@ declare class Shopify {
     get: (id: number, params?: any) => Promise<Shopify.ICollect>;
     list: (params?: any) => Promise<Shopify.ICollect[]>;
   };
+  collection: {
+    get: (id: number, params?: any) => Promise<Shopify.ICollection>;
+    products: (id: number, params?: any) => Promise<Shopify.IProduct[]>;
+  };
   collectionListing: {
     get: (id: number, params?: any) => Promise<Shopify.ICollectionListing>;
     list: (params?: any) => Promise<Shopify.ICollectionListing[]>;
